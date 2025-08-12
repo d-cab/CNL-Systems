@@ -115,13 +115,14 @@ html {
   background-color: #0056b3;
 }
 
-.btn-secondary {
-  background-color: #e2e6ea;
-  color: #333;
+.btn-large {
+  padding: 1rem 2rem;
+  font-size: 1.25rem;
 }
 
-.btn-secondary:hover {
-  background-color: #ccc;
+.btn-small {
+  padding: 0.2rem 1rem;
+  font-size: 0.9rem;
 }
 
 /*Learn more*/
