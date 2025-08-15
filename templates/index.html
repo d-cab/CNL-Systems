@@ -4,17 +4,17 @@
   <meta charset="UTF-8" />
   <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>CNL Systems</title> -->
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 <nav class="navbar">
     <div class="nav-container">
-        <a href="index.html" class="logo">CNL Systems</a>
+        <a href="/" class="logo">CNL Systems</a>
         <div id="navbar-button-slot"></div>
         <ul class="nav-links">
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="login.html">Login</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/login">Login</a></li>
         </ul>
     </div>
 </nav>
@@ -60,7 +60,7 @@
 </section>
 
 
-  <script src="script.js"></script>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
 
