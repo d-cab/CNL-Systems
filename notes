@@ -1,14 +1,16 @@
-Home page
-    Introduce DilAi
-    Call to action: Sign up for DilAi
-        Sign up page
-            Info: Name, Company name, email, phone
-About
-    Introduce company CNL Systems
-    Introduce the founders
-    Goal: build credibility and trust
-Contact
-    Place to leave inquiries
-    Contact information
-Login
-    Access to DilAi
+Need a registration page
+Anyone can make an account, but theyll need an access code for any product.
+Maybe the free account comes with a short demo.
+Need to hook up the payment gateway, subscription based payment.
+Need a plans page then. Subscription based on how many uses permitted per month or even users.
+
+
+register
+enter username, password, submit
+if username or password don't fit criteria
+    send error
+    dont add user to db
+    try again
+if username and password fit criteria
+    add user to db
+    send email confirmation
