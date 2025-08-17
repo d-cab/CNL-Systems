@@ -14,3 +14,6 @@ if username or password don't fit criteria
 if username and password fit criteria
     add user to db
     send email confirmation
+
+Need to add to the dashboard. A link to the service, and there the integrated application
+Admin permissions, a place to enter a code, a place to confirm the email.
