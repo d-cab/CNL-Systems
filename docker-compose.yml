@@ -7,9 +7,11 @@ services:
     restart: always
     volumes:
       - .:/app
-      - ./instance:/app/instance
+      - ./instance:/app/instance               # persistent SQLite data
     expose:
       - "8000"
+    env_file:
+      - .env                                   # load environment variables
     environment:
       - FLASK_ENV=production
     networks:
@@ -19,13 +21,15 @@ services:
     image: nginx:latest
     container_name: cnl_nginx
     restart: always
+    depends_on:
+      - web
     ports:
-      - "80:80"
+      - "80:80"                                # HTTP
+      - "443:443"                              # HTTPS
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
       - ./static:/app/static
-    depends_on:
-      - web
+      - /etc/letsencrypt:/etc/letsencrypt:ro   # mount SSL certs from host
     networks:
       - cnl_network
 
