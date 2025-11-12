@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+  web:
+    build: .
+    container_name: cnl_web
+    restart: always
+    env_file: .env
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+      - sqlite_data:/app/instance
+      - uploads_data:/app/cnl/static/uploads
+    environment:
+      FLASK_ENV: production
+      FLASK_DEBUG: "False"
+
+volumes:
+  sqlite_data:
+  uploads_data:
