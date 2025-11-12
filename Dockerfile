@@ -1,39 +1,29 @@
-# ===============================
-# Base image
-# ===============================
-FROM python:3.11-slim
+# Dockerfile
+FROM python:3.12-slim
 
-# Prevent Python from buffering stdout/stderr
-ENV PYTHONUNBUFFERED=1
-
-# Set working directory inside container
+# Set working directory
 WORKDIR /app
 
-# Install system dependencies (for things like Pillow, psycopg2, etc.)
-RUN apt-get update && apt-get install -y --no-install-recommends \
+# Prevent Python from buffering logs
+ENV PYTHONUNBUFFERED=1
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
     build-essential \
     libpq-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy dependency list first (for caching)
+# Copy requirements and install
 COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt \
+    && pip install gunicorn
 
-# Install dependencies
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Copy the entire project into the container
+# Copy app code
 COPY . .
 
-# Ensure instance directory exists for SQLite and uploads
-RUN mkdir -p /app/instance && mkdir -p /app/cnl/static/uploads
-
-# Set environment variables for Flask
-ENV FLASK_APP=cnl:create_app
-ENV FLASK_ENV=production
-ENV FLASK_DEBUG=False
-
-# Expose Flask/Gunicorn port
+# Expose Gunicorn port
 EXPOSE 8000
 
-# Use entrypoint to run migrations + start Gunicorn
-ENTRYPOINT ["./entrypoint.sh"]
+# Default command: Gunicorn
+# Replace 'app:create_app()' with your actual app entry point if you use factory pattern
+CMD ["gunicorn", "-b", "0.0.0.0:8000", "app:app"]
