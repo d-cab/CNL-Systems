@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for, session
-from app.models import User
-from app.extensions import db
-from app.utils import registerEmail, registerPassword
+from cnl.models import User
+from cnl.extensions import db
+from cnl.utils import registerEmail, registerPassword
 
 index_bp = Blueprint("index", __name__)
 

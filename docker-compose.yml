@@ -6,8 +6,8 @@ services:
     container_name: cnl_web
     restart: always
     volumes:
-      - .:/app
-      - ./instance:/app/instance               # persistent SQLite data
+      - .:/cnl
+      - ./instance:/cnl/instance               # persistent SQLite data
     expose:
       - "8000"
     env_file:
@@ -28,7 +28,7 @@ services:
       - "443:443"                              # HTTPS
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
-      - ./static:/app/static
+      - ./static:/cnl/static
       - /etc/letsencrypt:/etc/letsencrypt:ro   # mount SSL certs from host
     networks:
       - cnl_network

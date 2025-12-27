@@ -1,5 +1,5 @@
-from app import create_app
-from app.extensions import db
+from cnl import create_app
+from cnl.extensions import db
 import os
 
 app = create_app()

@@ -1,6 +1,6 @@
 from flask import request
-from app.extensions import db
-from app.models import User
+from cnl.extensions import db
+from cnl.models import User
 
 def registerPassword():
     password = request.form.get("password")
