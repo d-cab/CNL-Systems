@@ -1,8 +1,8 @@
 import os
 from flask import Flask
 from dotenv import load_dotenv
-from cnl.extensions import db
-from cnl.routes import register_blueprints
+from app.extensions import db
+from app.routes import register_blueprints
 
 def create_app():
     load_dotenv()
